@@ -1,6 +1,7 @@
 import React from "react";
 import "./globals.css";
 import { Nunito } from "next/font/google";
+import { Header } from "components/shared/Header";
 
 const nunito = Nunito({
   subsets: ["cyrillic"],
@@ -12,7 +13,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html className={nunito.variable} lang="en">
       <body className={nunito.className}>
-        <main className=" min-h-screen ">{children}</main>
+        <main className=" min-h-screen ">
+          <Header />
+          {children}
+        </main>
       </body>
     </html>
   );
