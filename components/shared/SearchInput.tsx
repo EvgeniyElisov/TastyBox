@@ -19,8 +19,13 @@ export const SearchInput = ({ className }: Props) => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useDebounce(
-    () => {
-      apiClient.products.search(searchQuery).then((products) => setProducts(products));
+    async () => {
+      try {
+        const products = await apiClient.products.search(searchQuery);
+        setProducts(products);
+      } catch (error) {
+        console.error(error);
+      }
     },
     500,
     [searchQuery]
