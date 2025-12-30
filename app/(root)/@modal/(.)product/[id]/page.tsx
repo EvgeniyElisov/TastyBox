@@ -1,12 +1,12 @@
-import { ChooseProductModal } from "components/shared/modals/ChooseProductModal";
 import { prisma } from "prisma/prisma";
 import { notFound } from "next/navigation";
+import { ChooseProductModal } from "components/shared";
 
 type Props = {
   params: Promise<{ id: string }>;
 };
 
-export default async function PhotoModal({ params }: Props) {
+export default async function ProductModalPage({ params }: Props) {
   const { id } = await params;
   const product = await prisma.product.findFirst({
     where: {
@@ -14,18 +14,7 @@ export default async function PhotoModal({ params }: Props) {
     },
     include: {
       ingredients: true,
-      variants: {
-        orderBy: {
-          createdAt: "desc",
-        },
-        include: {
-          product: {
-            include: {
-              variants: true,
-            },
-          },
-        },
-      },
+      variants: true,
     },
   });
 
