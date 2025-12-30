@@ -29,11 +29,19 @@ export const ProductsGroupList = ({ title, products, className, listClassName, c
   }, [intersection?.isIntersecting]);
 
   return (
-    <div className={className} id={title} ref={intersectionRef}>
+    <div className={cn(className, "scroll-mt-[120px]")} id={title} ref={intersectionRef}>
       <Title text={title} size="lg" className="font-extrabold mb-5" />
       <div className={cn("grid grid-cols-3 gap-[50px]", listClassName)}>
         {products.map((product) => (
-          <ProductCard key={product.id} id={product.id} name={product.name} imageUrl={product.imageUrl} price={product.items[0].price} />
+          <ProductCard 
+            key={product.id} 
+            id={product.id} 
+            name={product.name} 
+            imageUrl={product.imageUrl} 
+            price={product.variants[0].price} 
+            variants={product.variants}
+            ingredients={product.ingredients}
+          />
         ))}
       </div>
     </div>

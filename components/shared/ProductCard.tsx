@@ -10,9 +10,11 @@ type Props = {
   price: number;
   imageUrl: string;
   className?: string;
+  variants: any[];
+  ingredients: any[];
 };
 
-export const ProductCard = ({ id, name, price, imageUrl, className }: Props) => {
+export const ProductCard = ({ id, name, price, imageUrl, className, variants, ingredients }: Props) => {
   return (
     <div className={className}>
       <Link href={`/product/${id}`}>
