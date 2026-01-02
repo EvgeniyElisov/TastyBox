@@ -9,7 +9,7 @@ type Variant = {
 };
 
 type Props = {
-  items: readonly Variant[];
+  items: Variant[];
   onClick?: (value: Variant["value"]) => void;
   className?: string;
   value?: Variant["value"];
@@ -17,7 +17,7 @@ type Props = {
 
 export const GroupVariants = ({ className, items, value, onClick }: Props) => {
   
-  const onCLickHandler = (value: Variant["value"]) => {
+  const onClickHandler = (value: Variant["value"]) => {
     onClick?.(value);
   };
 
@@ -27,7 +27,7 @@ export const GroupVariants = ({ className, items, value, onClick }: Props) => {
         <button
           type="button"
           key={item.name}
-          onClick={() => onCLickHandler(item.value)}
+          onClick={() => onClickHandler(item.value)}
           className={cn("flex items-center justify-center cursor-pointer h-[30px] px-5 flex-1 rounded-3xl transition-all duration-400 text-sm", {
             "bg-white shadow": item.value === value,
             "text-gray-500 opacity-50 pointer-events-none": item.disabled,

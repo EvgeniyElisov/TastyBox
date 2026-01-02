@@ -23,8 +23,8 @@ export const IngredientItem = ({
     <div
       onClick={onClick}
       className={cn(
-        'flex items-center flex-col p-1 rounded-md w-32 text-center relative cursor-pointer shadow-md bg-white',
-        { 'border border-primary': active },
+        'flex items-center flex-col p-1 rounded-md w-32 text-center relative cursor-pointer shadow-md bg-white border border-transparent',
+        { 'border-primary': active },
         className,
       )}>
       {active && <CircleCheck className="absolute top-2 right-2 text-primary" />}

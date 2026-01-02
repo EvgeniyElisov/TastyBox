@@ -28,6 +28,7 @@ export const ChooseProductModal = ({ product, className }: Props) => {
             name={product.name} 
             ingredients={product.ingredients} 
             variants={product.variants} 
+            onClickAdd={() => {}}
           />
         : <ChooseProductForm 
             imageUrl={product.imageUrl} 
