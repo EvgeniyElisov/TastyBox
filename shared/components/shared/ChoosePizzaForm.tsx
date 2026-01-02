@@ -2,8 +2,11 @@
 
 import { cn } from "shared/lib/utils";
 import { ProductWithRelations } from "types/product";
-import { PizzaImage, Title } from ".";
+import { GroupVariants, PizzaImage, Title } from ".";
 import { Button } from "../ui";
+import { PizzaSize, pizzaSizes, PizzaType, pizzaTypes } from "shared/constants/pizza";
+import { useStartTyping } from "react-use";
+import { useState } from "react";
 
 type Props = {
   imageUrl: string;
@@ -52,11 +55,13 @@ export const ChoosePizzaForm= ({
   //     }
   //   };
 
-  const size = 40;
 
   const textDetaills = "Lorem ipsum dolor sit amet consectetur";
 
   const totalPrice = 350;
+
+  const [size, setSize] = useState<PizzaSize>(20)
+  const [type, setType] = useState<PizzaType>(1)
 
   return (
     <div className={cn(className, "flex flex-1")}>
@@ -78,6 +83,20 @@ export const ChoosePizzaForm= ({
         <div className="bg-gray-50 p-5 rounded-md h-[420px] overflow-auto scrollbar">
           <IngredientsList ingredients={ingredients} onClickAdd={toggleAddIngredient} selectedIds={selectedIngredientsIds} />
         </div> */}
+
+        <div className={'flex flex-col gap-3 mt-5 mb-8'}>
+          <GroupVariants 
+            items={pizzaSizes} 
+            value={String(size)} 
+            onClick={(value) => setSize(Number(value) as PizzaSize)}
+          />
+
+            <GroupVariants 
+            items={pizzaTypes} 
+            value={String(type)} 
+            onClick={(value) => setType(Number(value) as PizzaType)}
+          />
+        </div>
 
         <Button 
         // loading={loading} 

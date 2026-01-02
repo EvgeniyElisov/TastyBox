@@ -3,7 +3,6 @@
 @source "../shared/**/*.{js,jsx,ts,tsx}";
 @source "./**/*.{js,jsx,ts,tsx}";
 
-
 html {
   scroll-behavior: smooth;
 }
