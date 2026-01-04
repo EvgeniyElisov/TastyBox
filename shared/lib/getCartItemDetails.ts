@@ -1,4 +1,3 @@
-import { Ingredient } from "@prisma/client";
 import { mapPizzaType, PizzaSize, PizzaType } from "shared/constants/pizza";
 import { CartStateItem } from "shared/store/cart";
 

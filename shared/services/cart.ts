@@ -1,17 +1,17 @@
-import { CartResponse } from "./dto/cart";
+import { CartDTO } from "./dto/cart";
 import { axiosInstance } from "./instance";
 import { Cart } from "@prisma/client";
 
 type AddCartItemResponseDTO = { success: boolean; cart: Cart };
 
-export const getCart = async (): Promise<CartResponse> => {
-  const { data } = await axiosInstance.get<CartResponse>("/cart");
+export const getCart = async (): Promise<CartDTO> => {
+  const { data } = await axiosInstance.get<CartDTO>("/cart");
 
   return data;
 };
 
-export const updateItemQuantity = async (id: number, quantity: number): Promise<CartResponse> => {
-  const { data } = await axiosInstance.patch<CartResponse>("/cart/" + id, { quantity });
+export const updateItemQuantity = async (id: number, quantity: number): Promise<CartDTO> => {
+  const { data } = await axiosInstance.patch<CartDTO>("/cart/" + id, { quantity });
 
   return data;
 };

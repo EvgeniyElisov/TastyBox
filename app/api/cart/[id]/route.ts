@@ -4,7 +4,7 @@ import { updateCartTotalAmount } from "shared/lib/updateCartTotalAmount";
 
 export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
   try {
-    const id = Number(params.id);
+    const { id } = await params;
     const data = (await req.json()) as { quantity: number };
     const token = req.cookies.get("cartToken")?.value;
 
@@ -12,13 +12,9 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
       return NextResponse.json({ error: "Cart token not found" });
     }
 
-    if (data.quantity <= 0) {
-      return NextResponse.json({ error: "Quantity must be greater than 0" }, { status: 400 });
-    }
-
     const cartItem = await prisma.cartItem.findFirst({
       where: {
-        id,
+        id: Number(id),
       },
     });
 
@@ -28,7 +24,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
 
     await prisma.cartItem.update({
       where: {
-        id,
+        id: Number(id),
       },
       data: {
         quantity: data.quantity,

@@ -5,6 +5,6 @@ export type CartItemDTO = CartItem & {
   ingredients: Ingredient[];
 };
 
-export type CartResponse = Cart & {
+export type CartDTO = Cart & {
   items: CartItemDTO[];
 };

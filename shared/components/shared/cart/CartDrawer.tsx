@@ -7,6 +7,7 @@ import { getCartItemDetails, getProductInCorrectCase } from "shared/lib";
 import { CartDrawerItem } from "..";
 import { useCartStore } from "shared/store";
 import { useEffect } from "react";
+import { PizzaSize, PizzaType } from "shared/constants/pizza";
 
 export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
   
@@ -18,7 +19,6 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     fetchCartItems();
   }, []);
-
   const onClickCountButton = (id: number, quantity: number, type: "plus" | "minus") => {
     const newQuantity = type === "plus" ? quantity + 1 : quantity - 1;
     updateItemQuantity(id, newQuantity);
