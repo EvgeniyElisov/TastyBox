@@ -29,10 +29,6 @@ export const updateCartTotalAmount = async (token: string) => {
 
   const totalAmount = userCart.items.reduce((acc, item) => acc + calcCartItemTotalAmount(item), 0);
 
-  // const totalAmount = userCart.items.reduce((acc, item) => {
-  //   return acc + calcCartItemTotalAmount(item)
-  // }, 0);
-
   return await prisma.cart.update({
     where: {
       id: userCart.id,

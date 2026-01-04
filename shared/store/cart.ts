@@ -54,8 +54,19 @@ export const useCartStore = create<CartState>((set, get) => ({
       set({ loading: false });
     }
   },
+   removeCartItem: async (id: number) => {
+    try {
+      set({ loading: true, error: false });
+      const data = await apiClient.cart.removeCartItem(id);
+      set(getCartDetails(data));
+    } catch (error) {
+      set({ error: true });
+      console.error(error);
+    } finally {
+      set({ loading: false });
+    }
+  },
   addCartItem: async (values: any) => {},
-  removeCartItem: async (id: number) => {},
   // addCartItem: async (values: CreateCartItemValues) => {
   //   try {
   //     set({ loading: true, error: false });
@@ -68,16 +79,5 @@ export const useCartStore = create<CartState>((set, get) => ({
   //     set({ loading: false });
   //   }
   // },
-  // removeCartItem: async (id: number) => {
-  //   try {
-  //     set({ loading: true, error: false });
-  //     const data = await Api.cart.removeCartItem(id);
-  //     set(getCartDetails(data));
-  //   } catch (error) {
-  //     set({ error: true });
-  //     console.error(error);
-  //   } finally {
-  //     set({ loading: false });
-  //   }
-  // },
+ 
 }));
