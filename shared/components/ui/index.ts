@@ -7,6 +7,7 @@ export { Dialog, DialogContent, DialogTitle } from "./Dialog";
 export { Drawer } from "./Drawer";
 export { Popover } from "./Popover";
 export { Skeleton } from "./Skeleton";
+export { Textarea } from "./Textarea";
 export { 
     Sheet, 
     SheetContent, 
