@@ -34,6 +34,7 @@ html {
   --color-input: hsl(0 0% 90%);
   --color-ring: hsl(24.6 95% 53.1%);
   --color-form-bg: #faf5f1;
+  --color-page-bg: #F4F1EE;
   --radius: 18px;
 }
 
@@ -58,7 +59,6 @@ html {
     --border: 20 5.9% 90%;
     --input: 0 0% 90%;
     --ring: 24.6 95% 53.1%;
-    --form-bg: #faf5f1;
     --radius: 18px;
   }
 }
