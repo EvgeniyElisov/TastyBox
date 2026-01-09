@@ -5,14 +5,18 @@ import { CheckoutDetails, InfoBlock } from ".";
 
 type Props = {
   totalAmount: number;
-  totalPrice: number;
-  vatPrice: number;
-  deliveryPrice: number;
-  className?: string;
   submitting?: boolean;
+  className?: string;
 };
 
-export const CheckoutSidebar = ({ totalAmount, totalPrice, vatPrice, deliveryPrice, className, submitting }: Props) => {
+const VAT = 15;
+const DEVIVERY_PRICE = 250;
+
+export const CheckoutSidebar = ({ totalAmount, className, submitting }: Props) => {
+  
+  const vatPrice = totalAmount * VAT / 100;
+  const totalPrice = totalAmount + vatPrice + DEVIVERY_PRICE;
+  
   return (
     <InfoBlock className={cn("p-6 sticky top-4", className)}>
       <div className="flex flex-col gap-1">
@@ -33,7 +37,7 @@ export const CheckoutSidebar = ({ totalAmount, totalPrice, vatPrice, deliveryPri
       <CheckoutDetails
         icon={Truck}
         text="Доставка"
-        value={deliveryPrice}
+        value={DEVIVERY_PRICE}
       />
 
       <Button type="submit" disabled={!totalAmount || submitting} className="w-full h-14 rounded-2xl mt-6 text-base font-bold">

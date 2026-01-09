@@ -3,15 +3,17 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { PropsWithChildren, useState } from "react";
 import { Button, Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "shared/components/ui";
+import { PizzaSize, PizzaType } from "shared/constants/pizza";
 import { useCart } from "shared/hooks";
 import { getCartItemDetails, getProductInCorrectCase } from "shared/lib";
 import { cn } from "shared/lib/utils";
 import { CartDrawerItem, Title } from "..";
-import { PizzaSize, PizzaType } from "shared/constants/pizza";
 
-export const CartDrawer = ({ children }: { children: React.ReactNode }) => {
-  const { items, totalAmount, onClickCountButtonHandler, onClickRemoveCartItemHandler } = useCart();
+export const CartDrawer = ({ children }: PropsWithChildren) => {
+  const { items, totalAmount, onClickCountButtonHandler, onClickRemoveCartItemHandler, loading } = useCart();
+  const [redirecting, setRedirecting] = useState(false);
 
   return (
     <Sheet>
@@ -73,8 +75,8 @@ export const CartDrawer = ({ children }: { children: React.ReactNode }) => {
 
                   <Link href="/checkout">
                     <Button
-                      // onClick={() => setRedirecting(true)}
-                      // loading={loading || redirecting}
+                      onClick={() => setRedirecting(true)}
+                      loading={loading || redirecting}
                       type="submit"
                       className="w-full h-12 text-base"
                     >

@@ -1,79 +1,40 @@
 "use client";
 
-import { CheckoutSidebar, Container, InfoBlock, Item, Title } from "shared/components/shared";
-import { Input, Textarea } from "shared/components/ui";
-import { PizzaSize, PizzaType } from "shared/constants/pizza";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { CheckoutAddress, CheckoutCart, CheckoutPersonalInfo, CheckoutSidebar, Container, Title } from "shared/components/shared";
 import { useCart } from "shared/hooks";
-import { getCartItemDetails } from "shared/lib";
 
 export default function CheckoutPage() {
   const { items, totalAmount, onClickCountButtonHandler, onClickRemoveCartItemHandler } = useCart();
-
-  const totalPrice = 2000;
-  const vatPrice = 200;
-  const deliveryPrice = 100;
   const submitting = false;
-  
+  const form = useForm({
+    // resolver: zodResolver(),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      address: "",
+      comment: "",
+    },
+  });
+
   return (
     <Container className="mt-10">
       <Title text="Оформление заказа" className="font-extrabold mb-8 text-[36px]" />
       <div className="flex gap-10">
         <div className="flex flex-col gap-10 flex-1 mb-20">
-          <InfoBlock title="1. Корзина">
-            <div className="flex flex-col gap-5">
-              {items.map((item) => (
-                <Item 
-                  key={item.id}
-                  id={item.id}
-                  imageUrl={item.imageUrl}
-                  name={item.name}
-                  price={item.price}
-                  quantity={item.quantity}
-                  disabled={item.disabled}
-                  onClickCountButton={(type) => onClickCountButtonHandler(item.id, type, item.quantity)}
-                  onClickRemoveCartItem={() => onClickRemoveCartItemHandler(item.id)} 
-                  details={getCartItemDetails(item.ingredients, item.pizzaType as PizzaType, item.pizzaSize as PizzaSize)}
-                />
-              ))}
-            </div>
-            
-          </InfoBlock>
-          <InfoBlock 
-            title="2. Персональная информация" 
-            className={!totalAmount ? "opacity-50 pointer-events-none" : ""} 
-            contentClassName="p-8"
-          >
-            <div className="grid grid-cols-2 gap-5">
-              <Input name="firstName" className="text-base" placeholder="Имя" />
-              <Input name="lastName" className="text-base" placeholder="Фамилия" />
-              <Input name="email" className="text-base" placeholder="E-Mail" />
-              <Input name="phone" className="text-base" placeholder="Телефон" />
-            </div>
-          </InfoBlock>
-          <InfoBlock 
-            title="3. Адрес доставки" 
-            className={!totalAmount ? "opacity-50 pointer-events-none" : ""} 
-            contentClassName="p-8"
-          >
-            <div className="flex flex-col gap-5">
-              <Input name="address" className="text-base" placeholder="Адрес доставки" />
-              <Textarea 
-                name="comment" 
-                className="text-base" 
-                placeholder="Комментарий к заказу" 
-                rows={5} 
-              />
-            </div>
-          </InfoBlock>
+          <CheckoutCart 
+            items={items} 
+            onClickCountButtonHandler={onClickCountButtonHandler} 
+            onClickRemoveCartItemHandler={onClickRemoveCartItemHandler} 
+          />
+         <CheckoutPersonalInfo totalAmount={totalAmount} />
+         <CheckoutAddress totalAmount={totalAmount} />
         </div>
         <div className="w-[450px]">
-          <CheckoutSidebar 
-            totalPrice={totalPrice} 
-            totalAmount={totalAmount} 
-            vatPrice={vatPrice} 
-            deliveryPrice={deliveryPrice} 
-            submitting={submitting} 
-          />
+          <CheckoutSidebar totalAmount={totalAmount} submitting={submitting} />
         </div>
       </div>
     </Container>
