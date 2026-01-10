@@ -1,31 +1,30 @@
 "use client";
 
 import { InputHTMLAttributes, TextareaHTMLAttributes } from "react";
-import { useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { Input, Textarea } from "shared/components/ui";
 import { ClearButton, ErrorText, Label } from ".";
+import { cn } from "shared/lib/utils";
+import { AddressInput } from "../checkout";
 
 type BaseProps = {
   name: string;
   label?: string;
   required?: boolean;
+  placeholder?: string;
   className?: string;
-  fieldType?: "input" | "textarea";
+  fieldType?: "input" | "textarea" | "address";
 };
 
-type InputProps = BaseProps & {
-  fieldType?: "input";
-} & InputHTMLAttributes<HTMLInputElement>;
+type InputProps = BaseProps & InputHTMLAttributes<HTMLInputElement>;
 
-type TextareaProps = BaseProps & {
-  fieldType: "textarea";
-} & TextareaHTMLAttributes<HTMLTextAreaElement>;
+type TextareaProps = BaseProps & TextareaHTMLAttributes<HTMLTextAreaElement>;
 
-type Props = InputProps | TextareaProps;
+type Props = InputProps | TextareaProps | BaseProps;
 
 export const FormField = ({ className, name, label, required, fieldType = "input", ...props }: Props) => {
   const {
-    register,
+    control,
     formState: { errors },
     watch,
     setValue,
@@ -39,26 +38,52 @@ export const FormField = ({ className, name, label, required, fieldType = "input
   };
 
   const isTextarea = fieldType === "textarea";
+  const isAddress = fieldType === "address";
+ 
 
   return (
-    <div className={className}>
+    <div className={cn("text-base", className)}>
       {label && <Label label={label} required={required} />}
 
       <div className="relative">
-        {isTextarea ? (
-          <Textarea 
-            className="h-20 text-md" 
-            {...register(name)} 
-            {...(props as TextareaHTMLAttributes<HTMLTextAreaElement>)} 
+        { isAddress ? (
+          <Controller 
+            control={control} 
+            name={name} 
+            render={({ field }) => (
+              <AddressInput 
+                value={field.value} 
+                onChange={field.onChange} 
+                {...(props as BaseProps)} 
+              />
+            )} 
+          />
+        ) : isTextarea ? (
+          <Controller 
+            control={control} 
+            name={name} 
+            render={({ field }) => (
+              <Textarea 
+                className="h-20 text-md" 
+                {...field}
+                {...(props as TextareaHTMLAttributes<HTMLTextAreaElement>)} 
+              />
+            )} 
           />
         ) : (
-          <Input 
-            className="h-12 text-md" 
-            {...register(name)} 
-            {...(props as InputHTMLAttributes<HTMLInputElement>)} 
+          <Controller 
+            control={control} 
+            name={name} 
+            render={({ field }) => (
+              <Input 
+                className="h-12 text-md" 
+                {...field}
+                {...(props as InputHTMLAttributes<HTMLInputElement>)} 
+              />
+            )} 
           />
         )}
-
+       
         {text && <ClearButton onClick={onClickClear} />}
       </div>
 
