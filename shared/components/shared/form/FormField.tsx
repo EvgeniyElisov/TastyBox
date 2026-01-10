@@ -59,9 +59,7 @@ export const FormField = ({ className, name, label, required, fieldType = "input
           />
         )}
 
-        {text && (
-          <ClearButton onClick={onClickClear} />
-        )}
+        {text && <ClearButton onClick={onClickClear} />}
       </div>
 
       {errorText && <ErrorText text={errorText} />}

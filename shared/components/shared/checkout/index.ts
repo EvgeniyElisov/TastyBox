@@ -6,3 +6,4 @@ export { ItemSkeleton } from "./ItemSkeleton";
 export { CheckoutCart } from "./CheckoutCart";
 export { CheckoutPersonalInfo } from "./CheckoutPersonalInfo";
 export { CheckoutAddress } from "./CheckoutAddress";
+export { AddressInput } from "./AddressInput";
