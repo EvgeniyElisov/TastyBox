@@ -8,14 +8,10 @@ type Props = {
 
 export const CheckoutAddress = ({ totalAmount, className }: Props) => {
   return (
-    <InfoBlock 
-      title="3. Адрес доставки" 
-      className={className} 
-      contentClassName="p-8"
-    >
+    <InfoBlock title="3. Адрес доставки" className={className} contentClassName="p-8">
       <div className="flex flex-col gap-5">
-        <FormField name="address" fieldType="address" placeholder="Адрес" />
-        <FormField name="comment" fieldType="textarea" placeholder="Комментарий к заказу" />
+        <FormField name="address" fieldType="address" placeholder="Адрес" label="Адрес" required />
+        <FormField name="comment" fieldType="textarea" placeholder="Комментарий к заказу" label="Комментарий к заказу" />
       </div>
     </InfoBlock>
   );
