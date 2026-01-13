@@ -8,7 +8,14 @@ type ReturnProps = {
   items: CartStateItem[];
 };
 
-export const getCartDetails = (data: CartDTO): ReturnProps => {
+export const getCartDetails = (data: CartDTO | null): ReturnProps => {
+  if (!data || !data.items) {
+    return {
+      totalAmount: 0,
+      items: [],
+    };
+  }
+
   const items = data.items.map((item) => {
     return {
       id: item.id,
@@ -27,7 +34,7 @@ export const getCartDetails = (data: CartDTO): ReturnProps => {
   });
 
   return {
-    totalAmount: data.totalAmount,
+    totalAmount: data.totalAmount ?? 0,
     items,
   };
 };
