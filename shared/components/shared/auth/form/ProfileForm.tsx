@@ -9,6 +9,7 @@ import { Button } from "shared/components/ui";
 import { toastError, toastSuccess } from "shared/lib";
 import { Container, FormField, SubmitButton, Title } from "../..";
 import { formProfileSchema, ProfileFormInputs } from "./schemas";
+import { redirect } from "next/navigation";
 
 type Props = {
   data: User;
@@ -34,7 +35,8 @@ export const ProfileForm = ({ data }: Props) => {
       });
       toastSuccess("Данные обновлены 📝");
     } catch (error) {
-      return toastError("Ошибка при обновлении данных");
+      const errorMessage = error instanceof Error ? error.message : "Ошибка при обновлении данных";
+      return toastError(errorMessage);
     }
   };
 
@@ -109,7 +111,7 @@ export const ProfileForm = ({ data }: Props) => {
                   className="h-12 text-base font-semibold px-6" 
                   type="button"
                 >
-                  Выйти
+                  Выйти из аккаунта
                 </Button>
               </div>
             </form>

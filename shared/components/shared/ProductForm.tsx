@@ -1,6 +1,6 @@
 "use client";
 
-import { toastError, toastSuccess } from "shared/lib";
+import { toastSuccess } from "shared/lib";
 import { useCartStore } from "shared/store";
 import { ProductWithRelations } from "types/product";
 import { ChoosePizzaForm, ChooseProductForm } from ".";
@@ -25,11 +25,9 @@ export const ProductForm = ({ className, product, onSuccess }: Props) => {
         productVariantId,
         ingredients,
       });
-      toastSuccess("Товар добавлен в корзину");
       onSuccess?.();
     } catch (error) {
       console.error(error);
-      toastError("Не удалось добавить товар в корзину");
     }
   };
 

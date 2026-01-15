@@ -1,5 +1,5 @@
 import { PizzaSize, PizzaType } from "shared/constants/pizza";
-import { getCartDetails } from "shared/lib";
+import { getCartDetails, toastError, toastSuccess } from "shared/lib";
 import { apiClient } from "shared/services";
 import { CreateCartItemValues } from "shared/services/dto/cart";
 import { create } from "zustand";
@@ -57,6 +57,7 @@ export const useCartStore = create<State>((set, get) => ({
     } catch (error) {
       console.error(error);
       set({ error: true });
+      toastError("Не удалось обновить количество товара");
     } finally {
       set((state) => ({
         items: state.items.map((item) => (item.id === id ? { ...item, disabled: false } : item)),
@@ -71,9 +72,11 @@ export const useCartStore = create<State>((set, get) => ({
       }));
       const data = await apiClient.cart.removeCartItem(id);
       set(getCartDetails(data));
+      toastSuccess("Товар удален из корзины");
     } catch (error) {
       set({ error: true });
       console.error(error);
+      toastError("Не удалось удалить товар из корзины");
     } finally {
       set((state) => ({
         items: state.items.map((item) => (item.id === id ? { ...item, disabled: false } : item)),
@@ -85,9 +88,11 @@ export const useCartStore = create<State>((set, get) => ({
       set({ loading: true, error: false });
       const data = await apiClient.cart.addCartItem(values);
       set(getCartDetails(data));
+      toastSuccess("Товар добавлен в корзину");
     } catch (error) {
       console.error(error);
       set({ error: true });
+      toastError("Не удалось добавить товар в корзину");
     } finally {
       set({ loading: false });
     }

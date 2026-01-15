@@ -4,7 +4,7 @@ import { OrderStatus, Prisma } from "@prisma/client";
 import { hashSync } from "bcrypt";
 import { cookies } from "next/headers";
 import { prisma } from "prisma/prisma";
-import { PayOrderTemplate } from "shared/components/shared";
+import { PayOrderTemplate, VerifyUserTemplate } from "shared/components/shared";
 import { OrderFormInputs } from "shared/components/shared/checkout/form/schemas/orderFormSchema";
 import { getUserSession, sendEmail } from "shared/lib";
 
@@ -14,7 +14,7 @@ export async function createOrder(data: OrderFormInputs) {
     const token = cookieStore.get("cartToken")?.value;
 
     if (!token) {
-      throw new Error("Cart token not found");
+      throw new Error("Токен корзины не найден");
     }
 
     const userCart = await prisma.cart.findFirst({
@@ -37,11 +37,11 @@ export async function createOrder(data: OrderFormInputs) {
     });
 
     if (!userCart) {
-      throw new Error("Cart not found");
+      throw new Error("Корзина не найдена");
     }
 
     if (userCart?.totalAmount === 0) {
-      throw new Error("Cart is empty");
+      throw new Error("Корзина пуста");
     }
 
     const order = await prisma.order.create({
@@ -126,5 +126,57 @@ export async function updateUserInfo(body: UpdateUserInfoBody) {
   } catch (error) {
     console.error("[UPDATE_USER_INFO] Server error: ", error);
     throw new Error("Не удалось обновить данные пользователя");
+  }
+}
+
+type RegisterUserBody = {
+  email: string;
+  fullName: string;
+  password: string;
+};
+
+export async function registerUser(body: RegisterUserBody) {
+  try {
+    const user = await prisma.user.findFirst({
+      where: {
+        email: body.email,
+      },
+    });
+
+    if (user) {
+      if (!user.verified) {
+        throw new Error("Пользователь не подтвердил свою почту. Проверьте почту для подтверждения регистрации");
+      }
+      throw new Error("Пользователь с такой почтой уже существует");
+    }
+
+    const newUser = await prisma.user.create({
+      data: {
+        email: body.email,
+        fullName: body.fullName,
+        password: hashSync(body.password, 10),
+      },
+    });
+
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+
+    await prisma.verificationCode.create({
+      data: {
+        userId: newUser.id,
+        code,
+      },
+    });
+
+    sendEmail(
+      newUser.email,
+      "Подтверждение регистрации",
+      VerifyUserTemplate({
+        code,
+      })
+    );
+
+  } catch (error) {
+    console.error("[REGISTER_USER] Server error: ", error);
+    throw new Error("Не удалось зарегистрировать пользователя");
   }
 }

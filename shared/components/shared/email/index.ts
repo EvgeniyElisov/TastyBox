@@ -1,1 +1,0 @@
-export { PayOrderTemplate } from "./PayOrderTemplate";

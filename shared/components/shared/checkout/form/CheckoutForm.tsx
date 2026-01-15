@@ -43,7 +43,8 @@ export const CheckoutForm = () => {
       }
     } catch (error) {
       console.error(error);
-      toastError("Не удалось оформить заказ");
+      const errorMessage = error instanceof Error ? error.message : "Не удалось оформить заказ";
+      toastError(errorMessage);
     } finally {
       setSubmitting(false);
     }
