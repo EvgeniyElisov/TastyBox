@@ -1,6 +1,8 @@
 import { AlertCircle } from "lucide-react";
+import Link from "next/link";
 import { Container, Title } from "shared/components/shared";
 import { InfoBlock } from "shared/components/shared/checkout";
+import { Button } from "shared/components/ui";
 
 export default function PaymentPage() {
   return (
@@ -15,6 +17,11 @@ export default function PaymentPage() {
           <p className="text-gray-600 text-lg max-w-md">
             В данный момент платежная система находится в разработке.
           </p>
+          <Link href="/">
+            <Button variant="default" size="lg" className="mt-4">
+              Вернуться на главную
+            </Button>
+          </Link>
         </div>
       </InfoBlock>
     </Container>
