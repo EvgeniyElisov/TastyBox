@@ -3,8 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Button } from "shared/components/ui";
-import { FormField } from "../..";
+import { FormField, SubmitButton } from "../..";
 import { formRegisterSchema, RegisterFormInputs } from "./schemas";
 
 type Props = {
@@ -75,9 +74,9 @@ export const RegisterForm = ({ onClose, onClickLogin }: Props) => {
           required 
         />
 
-        <Button loading={form.formState.isSubmitting} className="h-12 text-base" type="submit">
+        <SubmitButton isSubmitting={form.formState.isSubmitting}>
           Зарегистрироваться
-        </Button>
+        </SubmitButton>
       </form>
     </FormProvider>
   );

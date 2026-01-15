@@ -8,3 +8,4 @@ export { getProductInCorrectCase } from "./getProductInCorrectCase";
 export { sendEmail } from "./sendEmail";
 export { toastSuccess } from "./toastSuccess";
 export { toastError } from "./toastError";
+export { getUserSession } from "./getUserSession";

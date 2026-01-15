@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button, Dialog, DialogContent } from "shared/components/ui";
-import { LoginForm, RegisterForm, SocialAuthButtons } from ".";
+import { LoginForm, RegisterForm } from ".";
 
 type Props = {
   open: boolean;

@@ -1,14 +1,12 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormProvider, useForm } from "react-hook-form";
-import { formLoginSchema, LoginFormInputs } from "./schemas";
 import { signIn } from "next-auth/react";
-import toast from "react-hot-toast";
-import { FormField, SocialAuthButtons, Title } from "../..";
-import { Button } from "shared/components/ui";
 import Image from "next/image";
+import { FormProvider, useForm } from "react-hook-form";
 import { toastError, toastSuccess } from "shared/lib";
+import { FormField, SocialAuthButtons, SubmitButton, Title } from "../..";
+import { formLoginSchema, LoginFormInputs } from "./schemas";
 
 type Props = {
   onClose?: () => void;
@@ -69,9 +67,9 @@ export const LoginForm = ({ onClose }: Props) => {
           required 
         />
 
-        <Button loading={form.formState.isSubmitting} className="h-12 text-base" type="submit">
+        <SubmitButton isSubmitting={form.formState.isSubmitting}>
           Войти
-        </Button>
+        </SubmitButton>
         <p className="text-gray-400">Или войдите с помощью социальных сетей</p>
         <SocialAuthButtons type="login" onSwitchType={() => {}} />
       </form>
