@@ -2,20 +2,21 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { User } from "@prisma/client";
+import { updateUserInfo } from "app/serverActions";
 import { signOut } from "next-auth/react";
 import { FormProvider, useForm } from "react-hook-form";
+import { Button } from "shared/components/ui";
 import { toastError, toastSuccess } from "shared/lib";
 import { Container, FormField, SubmitButton, Title } from "../..";
-import { Button } from "shared/components/ui";
-import { formRegisterSchema, RegisterFormInputs } from "./schemas";
+import { formProfileSchema, ProfileFormInputs } from "./schemas";
 
 type Props = {
   data: User;
 };
 
 export const ProfileForm = ({ data }: Props) => {
-  const form = useForm<RegisterFormInputs>({
-    resolver: zodResolver(formRegisterSchema),
+  const form = useForm<ProfileFormInputs>({
+    resolver: zodResolver(formProfileSchema),
     defaultValues: {
       fullName: data.fullName,
       email: data.email,
@@ -24,14 +25,13 @@ export const ProfileForm = ({ data }: Props) => {
     },
   });
 
-  const onSubmit = async (data: RegisterFormInputs) => {
+  const onSubmit = async (data: ProfileFormInputs) => {
     try {
       await updateUserInfo({
         email: data.email,
         fullName: data.fullName,
-        password: data.password,
+        password: data.password && data.password.length > 0 ? data.password : undefined,
       });
-
       toastSuccess("Данные обновлены 📝");
     } catch (error) {
       return toastError("Ошибка при обновлении данных");
