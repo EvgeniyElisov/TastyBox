@@ -1,7 +1,7 @@
 import { ArrowRight, Package, Percent, Truck } from "lucide-react";
 import { Button, Skeleton } from "shared/components/ui";
 import { cn } from "shared/lib/utils";
-import { CheckoutDetails, InfoBlock } from ".";
+import { CheckoutDetails, InfoBlock } from "..";
 
 type Props = {
   totalAmount: number;

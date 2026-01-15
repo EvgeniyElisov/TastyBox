@@ -4,7 +4,7 @@ import { OrderStatus } from "@prisma/client";
 import { cookies } from "next/headers";
 import { prisma } from "prisma/prisma";
 import { PayOrderTemplate } from "shared/components/shared";
-import { OrderFormInputs } from "shared/components/shared/checkout/schemas/orderFormSchema";
+import { OrderFormInputs } from "shared/components/shared/checkout/form/schemas/orderFormSchema";
 import { sendEmail } from "shared/lib";
 
 export async function createOrder(data: OrderFormInputs) {
@@ -71,6 +71,7 @@ export async function createOrder(data: OrderFormInputs) {
         cartId: userCart.id,
       },
     });
+    
     //TODO: сделать запрос на payment сервис
 
     await sendEmail(

@@ -1,9 +1,10 @@
 export { InfoBlock } from "./InfoBlock";
-export { CheckoutSidebar } from "./CheckoutSidebar";
-export { CheckoutDetails } from "./CheckoutDetails";
+export { CheckoutSidebar } from "./form/CheckoutSidebar";
+export { CheckoutDetails } from "./form/CheckoutDetails";
 export { Item } from "./Item";
 export { ItemSkeleton } from "./ItemSkeleton";
-export { CheckoutCart } from "./CheckoutCart";
-export { CheckoutPersonalInfo } from "./CheckoutPersonalInfo";
-export { CheckoutAddress } from "./CheckoutAddress";
-export { AddressInput } from "./AddressInput";
+export { CheckoutCart } from "./form/CheckoutCart";
+export { CheckoutPersonalInfo } from "./form/CheckoutPersonalInfo";
+export { CheckoutAddress } from "./form/CheckoutAddress";
+export { AddressInput } from "./form/AddressInput";
+export * from "./form";

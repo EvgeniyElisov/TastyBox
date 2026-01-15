@@ -1,7 +1,7 @@
 import { PizzaSize, PizzaType } from "shared/constants/pizza";
 import { getCartItemDetails } from "shared/lib";
 import { CartStateItem } from "shared/store/cart";
-import { InfoBlock, Item, ItemSkeleton } from ".";
+import { InfoBlock, Item, ItemSkeleton } from "..";
 
 type Props = {
   items: CartStateItem[];

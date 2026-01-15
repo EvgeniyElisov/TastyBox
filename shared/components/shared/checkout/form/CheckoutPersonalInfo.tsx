@@ -1,5 +1,5 @@
-import { InfoBlock } from ".";
-import { FormField } from "..";
+import { InfoBlock } from "..";
+import { FormField } from "../..";
 
 type Props = {
   totalAmount: number;

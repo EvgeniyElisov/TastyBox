@@ -41,5 +41,4 @@ export const ProductCard = ({ id, name, price, imageUrl, className, ingredients 
       </Link>
     </div>
   );
-  return <div>ProductCard</div>;
 };
