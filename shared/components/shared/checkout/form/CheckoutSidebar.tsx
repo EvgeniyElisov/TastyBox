@@ -18,17 +18,17 @@ export const CheckoutSidebar = ({ totalAmount, className, loading }: Props) => {
   const totalPrice = totalAmount ? totalAmount + vatPrice + DEVIVERY_PRICE : 0;
   
   return (
-    <InfoBlock className={cn("p-10 sticky top-4 bg-gradient-to-br from-white to-gray-50/50", className)}>
-      <div className="flex flex-col gap-3 mb-8 pb-6 border-b border-gray-200">
-        <span className="text-xl font-semibold text-gray-600">Итого:</span>
+    <InfoBlock className={cn("p-6 md:p-10 lg:sticky lg:top-4 bg-gradient-to-br from-white to-gray-50/50", className)}>
+      <div className="flex flex-col gap-3 mb-6 md:mb-8 pb-4 md:pb-6 border-b border-gray-200">
+        <span className="text-lg md:text-xl font-semibold text-gray-600">Итого:</span>
         {
           loading 
-           ? <Skeleton className="h-14 w-64 bg-gradient-to-r from-gray-200 to-gray-100 rounded-xl animate-pulse" />
-           : <span className="h-14 text-[44px] font-extrabold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">{`${totalPrice} руб.`}</span>          
+           ? <Skeleton className="h-10 md:h-14 w-full md:w-64 bg-gradient-to-r from-gray-200 to-gray-100 rounded-xl animate-pulse" />
+           : <span className="h-10 md:h-14 text-3xl md:text-[44px] font-extrabold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">{`${totalPrice} руб.`}</span>          
         }
       </div>
 
-      <div className="space-y-5 mb-10">
+      <div className="space-y-4 md:space-y-5 mb-6 md:mb-10">
         <CheckoutDetails
           icon={Package}
           text="Стоимость товаров"
@@ -49,10 +49,10 @@ export const CheckoutSidebar = ({ totalAmount, className, loading }: Props) => {
       <Button 
         type="submit" 
         loading={loading} 
-        className="w-full h-16 rounded-2xl text-lg font-bold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02]"
+        className="w-full h-12 md:h-16 rounded-2xl text-base md:text-lg font-bold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02]"
       >
         Перейти к оплате
-        <ArrowRight className="w-6 ml-2" />
+        <ArrowRight className="w-5 md:w-6 ml-2" />
       </Button>
     </InfoBlock>
   );

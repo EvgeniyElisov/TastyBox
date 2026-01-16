@@ -51,7 +51,7 @@ export const LoginForm = ({ onClose }: Props) => {
               Введите свою почту, чтобы войти в свой аккаунт
             </p>
           </div>
-          <div className="relative flex-shrink-0">
+          <div className="relative shrink-0">
             <div className="absolute inset-0 bg-primary/10 rounded-full blur-xl"></div>
             <Image 
               src="/assets/images/email-icon.png" 

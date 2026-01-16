@@ -6,5 +6,5 @@ interface Props {
 }
 
 export const CartItemDetailsPrice = ({ value, className }: Props) => {
-  return <h2 className={cn("font-bold text-lg", className)}>{`${value} руб.`}</h2>;
+  return <h2 className={cn("font-bold text-base sm:text-lg whitespace-nowrap", className)}>{`${value} руб.`}</h2>;
 };

@@ -61,8 +61,8 @@ export const CheckoutForm = () => {
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="flex gap-12">
-          <div className="flex flex-col gap-12 flex-1 mb-24">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
+          <div className="flex flex-col gap-6 lg:gap-12 flex-1 mb-6 lg:mb-24">
             <CheckoutCart
               items={items}
               onClickCountButtonHandler={onClickCountButtonHandler}
@@ -72,7 +72,7 @@ export const CheckoutForm = () => {
             <CheckoutPersonalInfo totalAmount={totalAmount} className={loading ? "opacity-40 pointer-events-none" : ""} />
             <CheckoutAddress totalAmount={totalAmount} className={loading ? "opacity-40 pointer-events-none" : ""} />
           </div>
-          <div className="w-[480px]">
+          <div className="w-full lg:w-[480px]">
             <CheckoutSidebar totalAmount={totalAmount} loading={loading || submitting} />
           </div>
         </div>

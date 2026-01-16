@@ -4,6 +4,7 @@ export { Title } from "./Title";
 export { Categories } from "./Categories";
 export { TopBar } from "./TopBar";
 export { Filters } from "./Filters";
+export { FiltersMobile } from "./FiltersMobile";
 export { FilterCheckbox } from "./FilterCheckbox";
 export { RangeSlider } from "./RangeSlider";
 export { CheckboxFiltersGroup } from "./CheckboxFiltersGroup";

@@ -20,12 +20,12 @@ export const Title = ({ text, size = "sm", className }: Props) => {
   } as const;
 
   const mapClassNameBySize = {
-    xs: "text-[18px]",
-    sm: "text-[24px]",
-    md: "text-[30px]",
-    lg: "text-[38px]",
-    xl: "text-[48px]",
-    "2xl": "text-[56px]",
+    xs: "text-base md:text-[18px] lg:text-[18px]",
+    sm: "text-lg md:text-xl lg:text-[24px]",
+    md: "text-xl md:text-2xl lg:text-[30px]",
+    lg: "text-2xl md:text-3xl lg:text-[38px]",
+    xl: "text-3xl md:text-4xl lg:text-[48px]",
+    "2xl": "text-4xl md:text-5xl lg:text-[56px]",
   } as const;
 
   return React.createElement(mapTagBySize[size], { className: clsx(mapClassNameBySize[size], className) }, text);

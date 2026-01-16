@@ -17,7 +17,7 @@ export default function VerifiedPage() {
             </div>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Регистрация завершена!</h1>
+          <h1 className="text-4xl md:text-5xl lg:text-5xl font-extrabold text-gray-900 mb-4">Регистрация завершена!</h1>
 
           <p className="text-lg text-gray-600 mb-2 leading-relaxed">Поздравляем! Ваш аккаунт успешно создан и подтверждён.</p>
           <p className="text-base text-gray-500 mb-12 leading-relaxed">Теперь вы можете войти в свой аккаунт и начать делать заказы.</p>

@@ -14,7 +14,7 @@ type Props = {
 export const CheckoutCart = ({ items, onClickCountButtonHandler, onClickRemoveCartItemHandler, className, initialLoading }: Props) => {
   return (
     <InfoBlock title="1. Корзина" className={className}>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-4 md:gap-5">
         {initialLoading
           ? Array(4)
               .fill(0)

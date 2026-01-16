@@ -10,15 +10,15 @@ type Props = {
 
 export const CheckoutDetails = ({ icon: Icon, text, value, className }: Props) => {
   return (
-    <div className={cn("flex", className)}>
-      <div className="flex flex-1 text-base text-neutral-500">
+    <div className={cn("flex flex-col sm:flex-row gap-2 sm:gap-0", className)}>
+      <div className="flex flex-1 text-sm sm:text-base text-neutral-500">
         <div className="flex items-center">
-          <Icon size={20} className={"mr-3 text-gray-400"} />
-          <span>{text}</span>
+          <Icon size={18} className={"mr-2 sm:mr-3 text-gray-400 flex-shrink-0"} />
+          <span className="truncate">{text}</span>
         </div>
-        <div className="flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-3" />
+        <div className="hidden sm:block flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-3" />
       </div>
-      <span className="font-bold text-base">{value}</span>
+      <span className="font-bold text-sm sm:text-base sm:ml-auto">{value}</span>
     </div>
   );
 };

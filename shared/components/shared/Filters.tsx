@@ -29,15 +29,15 @@ export const Filters = ({ className }: Props) => {
   };
 
   return (
-    <div className={cn("bg-white rounded-3xl p-6 shadow-lg border border-gray-100", className)}>
-      <div className="mb-8">
+    <div className={cn("bg-white rounded-2xl md:rounded-3xl lg:rounded-3xl p-4 md:p-6 lg:p-6 shadow-lg border border-gray-100", className)}>
+      <div className="mb-6 md:mb-8 lg:mb-8">
         <Title text="Фильтрация" size="sm" className="font-bold" />
       </div>
 
       <CheckboxFiltersGroup
         title="Тип теста"
         name="PizzaTypes"
-        className={"mt-6"}
+        className={"mt-4 md:mt-6 lg:mt-6"}
         selectedValues={filters.pizzaTypes}
         onClickCheckbox={filters.setPizzaTypes}
         items={[
@@ -49,7 +49,7 @@ export const Filters = ({ className }: Props) => {
       <CheckboxFiltersGroup
         title="Размеры"
         name="Sizes"
-        className={"mt-6"}
+        className={"mt-4 md:mt-6 lg:mt-6"}
         selectedValues={filters.sizes}
         onClickCheckbox={filters.setSizes}
         items={[
@@ -59,9 +59,9 @@ export const Filters = ({ className }: Props) => {
         ]}
       />
 
-      <div className={"mt-6 border-y border-y-neutral-100 py-7 pb-8"}>
-        <p className={"font-bold mb-4 text-base"}>Цена от и до:</p>
-        <div className={"flex gap-4 mb-6"}>
+      <div className={"mt-4 md:mt-6 lg:mt-6 border-y border-y-neutral-100 py-5 md:py-7 lg:py-7 pb-6 md:pb-8 lg:pb-8"}>
+        <p className={"font-bold mb-3 md:mb-4 lg:mb-4 text-sm md:text-base lg:text-base"}>Цена от и до:</p>
+        <div className={"flex gap-3 md:gap-4 lg:gap-4 mb-4 md:mb-6 lg:mb-6"}>
           <Input
             type="number"
             placeholder={minPrice.toString()}
@@ -92,7 +92,7 @@ export const Filters = ({ className }: Props) => {
       <CheckboxFiltersGroup
         title="Ингредиенты"
         name="Ingredients"
-        className={"mt-6"}
+        className={"mt-4 md:mt-6 lg:mt-6"}
         limit={6}
         defaultItems={items.slice(0, 6)}
         items={items}
