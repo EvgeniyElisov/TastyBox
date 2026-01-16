@@ -28,9 +28,9 @@ export const ChooseProductForm = ({
   }
 
   return (
-    <div className={cn(className, 'flex flex-col lg:flex-row flex-1')}>
+    <section className={cn(className, 'flex flex-col lg:flex-row flex-1')}>
       <div className="flex items-center justify-center flex-1 relative w-full min-h-[200px] md:min-h-[300px] lg:min-h-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl -z-10 blur-3xl" />
+        <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent rounded-3xl -z-10 blur-3xl" />
         <Image
           src={imageUrl}
           alt={name}
@@ -40,7 +40,7 @@ export const ChooseProductForm = ({
         />
       </div>
 
-      <div className="w-full lg:w-[560px] bg-gradient-to-br from-form-bg to-white p-4 md:p-6 lg:p-10 rounded-3xl shadow-2xl border border-gray-100">
+      <div className="w-full lg:w-[560px] bg-linear-to-br from-form-bg to-white p-4 md:p-6 lg:p-10 rounded-3xl shadow-2xl border border-gray-100">
         <Title text={name} size="md" className="font-extrabold mb-4 md:mb-6" />
 
         <Button
@@ -50,6 +50,6 @@ export const ChooseProductForm = ({
           Добавить в корзину за {price} руб.
         </Button>
       </div>
-    </div>
+    </section>
   );
 };

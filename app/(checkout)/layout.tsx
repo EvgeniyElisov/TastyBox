@@ -12,9 +12,11 @@ export default async function CheckoutLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="min-h-screen bg-page-bg">
+    <div className="min-h-screen bg-page-bg">
       <Header className="border-gray-200" hasSearch={false} hasCart={false} />
-      {children}
-    </main>
+      <main>
+        {children}
+      </main>
+    </div>
   );
 }

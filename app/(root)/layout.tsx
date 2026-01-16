@@ -15,10 +15,12 @@ export default function HomeLayout({
   modal: React.ReactNode;
 }>) {
   return (
-    <main className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       <Header />
-      <Suspense>{children}</Suspense>
-      <Suspense>{modal}</Suspense>
-    </main>
+      <main>
+        <Suspense>{children}</Suspense>
+        <Suspense>{modal}</Suspense>
+      </main>
+    </div>
   );
 }

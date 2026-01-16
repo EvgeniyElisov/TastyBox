@@ -51,13 +51,13 @@ export const ChoosePizzaForm = ({
   }
   
   return (
-    <div className={cn(className, "flex flex-col lg:flex-row flex-1 min-h-[500px] lg:min-h-[600px]")}>
+    <section className={cn(className, "flex flex-col lg:flex-row flex-1 min-h-[500px] lg:min-h-[600px]")}>
       <div className="flex-1 relative flex items-center justify-center min-h-[200px] md:h-[300px] lg:h-full overflow-hidden">
         <PizzaImage src={imageUrl} alt={name} size={size} />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl -z-10 blur-3xl" />
+        <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent rounded-3xl -z-10 blur-3xl" />
       </div>
 
-      <div className="w-full lg:w-[560px] bg-gradient-to-br from-form-bg to-white p-4 md:p-6 lg:p-10 rounded-3xl shadow-2xl border border-gray-100">
+      <div className="w-full lg:w-[560px] bg-linear-to-br from-form-bg to-white p-4 md:p-6 lg:p-10 rounded-3xl shadow-2xl border border-gray-100">
         <div className="mb-4">
           <Title text={name} size="md" className="font-extrabold mb-3" />
           <p className="text-sm md:text-base text-gray-500 leading-relaxed">{textDetails}</p>
@@ -76,7 +76,7 @@ export const ChoosePizzaForm = ({
           />
         </div>
         
-        <div className="bg-gradient-to-br from-gray-50 to-white p-4 md:p-6 lg:p-7 rounded-2xl h-[300px] md:h-[400px] lg:h-[480px] overflow-auto scrollbar shadow-inner border border-gray-100">
+        <div className="bg-linear-to-br from-gray-50 to-white p-4 md:p-6 lg:p-7 rounded-2xl h-[300px] md:h-[400px] lg:h-[480px] overflow-auto scrollbar shadow-inner border border-gray-100">
           <div className={"grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 lg:gap-5"}>
             {ingredients.map((ingredient) => (
               <IngredientItem 
@@ -99,6 +99,6 @@ export const ChoosePizzaForm = ({
           Добавить в корзину за {totalPrice} руб.
         </Button>
       </div>
-    </div>
+    </section>
   );
 };

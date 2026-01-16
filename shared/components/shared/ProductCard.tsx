@@ -16,7 +16,7 @@ type Props = {
 
 export const ProductCard = ({ id, name, price, imageUrl, className, ingredients }: Props) => {
   return (
-    <div className={className}>
+    <article className={className}>
       <Link href={`/product/${id}`} className="group block">
         <div className="relative overflow-hidden rounded-xl md:rounded-2xl lg:rounded-2xl bg-linear-to-br from-secondary to-secondary/50 h-[240px] md:h-[300px] lg:h-[320px] shadow-lg shadow-primary/5 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-primary/10 group-hover:-translate-y-1">
           <div className="absolute inset-0 bg-linear-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -57,6 +57,6 @@ export const ProductCard = ({ id, name, price, imageUrl, className, ingredients 
           </Button>
         </div>
       </Link>
-    </div>
+    </article>
   );
 };

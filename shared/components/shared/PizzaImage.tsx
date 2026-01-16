@@ -16,7 +16,7 @@ const mapSizeToDimensions = {
 export const PizzaImage = ({ src, alt, size, className }: Props) => {
   const baseSize = mapSizeToDimensions[size];
   return (
-    <div className={cn("flex items-center justify-center flex-1 relative w-full max-w-full", className)}>
+    <figure className={cn("flex items-center justify-center flex-1 relative w-full max-w-full", className)}>
       <div className="relative z-10 drop-shadow-2xl max-w-full max-h-full">
         <Image
           src={src}
@@ -30,6 +30,6 @@ export const PizzaImage = ({ src, alt, size, className }: Props) => {
           })}
         />
       </div>
-    </div>
+    </figure>
   );
 };

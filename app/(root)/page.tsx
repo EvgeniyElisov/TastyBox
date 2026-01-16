@@ -15,12 +15,12 @@ export default async function Home({searchParams}: {searchParams: Promise<GetSea
       <Stories/>
       
       <Container className={"mt-8 md:mt-12 lg:mt-16 pb-12 md:pb-20 lg:pb-24"}>
-        <div className={"flex flex-col lg:flex-row gap-6 lg:gap-12 lg:gap-20"}>
-          <div className={"hidden lg:block w-[280px] lg:w-[300px] sticky top-[140px] h-fit"}>
+        <div className={"flex flex-col lg:flex-row gap-6 lg:gap-12"}>
+          <aside className={"hidden lg:block w-[280px] lg:w-[300px] sticky top-[140px] h-fit"}>
             <Suspense>
               <Filters />
             </Suspense>
-          </div>
+          </aside>
           <div className={"lg:hidden"}>
             <Suspense>
               <FiltersMobile />

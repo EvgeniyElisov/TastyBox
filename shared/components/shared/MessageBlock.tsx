@@ -12,23 +12,23 @@ type Props = {
 
 export const MessageBlock = ({ title, text, imageSrc }: Props) => {
   return (
-    <div className={"flex items-center justify-between w-[840px] gap-12"}>
+    <section className={"flex items-center justify-between w-[840px] gap-12"}>
       <div className="flex flex-col">
         <div className="w-[445px]">
           <Title size="lg" text={title} className="font-extrabold" />
           <p className="text-gray-400 text-lg">{text}</p>
         </div>
 
-        <div className="flex gap-5 mt-11">
+        <nav className="flex gap-5 mt-11">
           <Link href="/">
             <Button variant="outline" className="gap-2">
               <ArrowLeft />
               На главную
             </Button>
           </Link>
-        </div>
+        </nav>
       </div>
       <Image src={imageSrc} alt={title} width={300} height={300} />
-    </div>
+    </section>
   );
 };

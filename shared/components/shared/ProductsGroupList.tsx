@@ -30,7 +30,7 @@ export const ProductsGroupList = ({ title, products, className, listClassName, c
   }, [intersection?.isIntersecting]);
 
   return (
-    <div className={cn(className, "scroll-mt-[120px] md:scroll-mt-[140px] lg:scroll-mt-[140px]")} id={title} ref={intersectionRef}>
+    <section className={cn(className, "scroll-mt-[120px] md:scroll-mt-[140px] lg:scroll-mt-[140px]")} id={title} ref={intersectionRef}>
       <div className="mb-6 md:mb-8 lg:mb-10">
         <Title text={title} size="lg" className="font-extrabold" />
       </div>
@@ -46,6 +46,6 @@ export const ProductsGroupList = ({ title, products, className, listClassName, c
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 };

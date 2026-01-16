@@ -29,7 +29,7 @@ export const Filters = ({ className }: Props) => {
   };
 
   return (
-    <div className={cn("bg-white rounded-2xl md:rounded-3xl lg:rounded-3xl p-4 md:p-6 lg:p-6 shadow-lg border border-gray-100", className)}>
+    <aside className={cn("bg-white rounded-2xl md:rounded-3xl lg:rounded-3xl p-4 md:p-6 lg:p-6 shadow-lg border border-gray-100", className)}>
       <div className="mb-6 md:mb-8 lg:mb-8">
         <Title text="Фильтрация" size="sm" className="font-bold" />
       </div>
@@ -100,6 +100,6 @@ export const Filters = ({ className }: Props) => {
         loading={loading}
         selectedValues={filters.selectedIngredientIds}
       />
-    </div>
+    </aside>
   );
 };
