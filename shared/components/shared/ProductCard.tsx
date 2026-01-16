@@ -30,9 +30,6 @@ export const ProductCard = ({ id, name, price, imageUrl, className, ingredients 
               sizes="(max-width: 768px) 200px, (max-width: 1024px) 240px, 260px"
             />
           </div>
-          <div className="absolute top-3 right-3 md:top-4 md:right-4 lg:top-4 lg:right-4 w-10 h-10 md:w-12 md:h-12 lg:w-12 lg:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-            <Plus className="text-primary w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />
-          </div>
         </div>
 
         <div className="mt-4 md:mt-5 lg:mt-5 space-y-1.5 md:space-y-2 lg:space-y-2">
