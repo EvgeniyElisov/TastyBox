@@ -14,13 +14,14 @@ const DEFAULT_MIN_PRICE = 0;
 const DEFAULT_MAX_PRICE = 100;
 
 export const findPizzas = async (params: GetSearchParams) => {
-  const sizes = params.sizes?.split(",").map(Number);
-  const pizzaTypes = params.pizzaTypes?.split(",").map(Number);
-  const ingredientsIds = params.ingredients?.split(",").map(Number);
-  const minPrice = Number(params.priceFrom) || DEFAULT_MIN_PRICE;
-  const maxPrice = Number(params.priceTo) || DEFAULT_MAX_PRICE;
+  try {
+    const sizes = params.sizes?.split(",").map(Number);
+    const pizzaTypes = params.pizzaTypes?.split(",").map(Number);
+    const ingredientsIds = params.ingredients?.split(",").map(Number);
+    const minPrice = Number(params.priceFrom) || DEFAULT_MIN_PRICE;
+    const maxPrice = Number(params.priceTo) || DEFAULT_MAX_PRICE;
 
-  const result = await prisma.category.findMany({
+    const result = await prisma.category.findMany({
     include: {
       products: {
         orderBy: {
@@ -69,5 +70,9 @@ export const findPizzas = async (params: GetSearchParams) => {
     },
   });
 
-  return result;
+    return result;
+  } catch (error) {
+    console.error("Ошибка при запросе пицц:", error);
+    throw error;
+  }
 };

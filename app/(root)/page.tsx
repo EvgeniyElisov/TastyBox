@@ -8,8 +8,15 @@ import { findPizzas, GetSearchParams } from "shared/lib/findPizzas";
 
 export default async function Home({searchParams}: {searchParams: Promise<GetSearchParams>}) {
   const params = await searchParams;
-  const categories = await findPizzas(params);
- 
+  
+  let categories: Awaited<ReturnType<typeof findPizzas>>;
+  try {
+    categories = await findPizzas(params);
+  } catch (error) {
+    console.error("Ошибка при запросе пицц:", error);
+      // Возвращаем пустой массив, чтобы приложение не упало
+    categories = [];
+  }
 
   return (
     <>
