@@ -58,14 +58,15 @@ function DialogContent({
     const checkChildren = (children: React.ReactNode): boolean => {
       return React.Children.toArray(children).some((child) => {
         if (React.isValidElement(child)) {
+          const props = child.props as Record<string, unknown>;
           if (
             child.type === DialogTitle ||
-            (child.props && "data-slot" in child.props && child.props["data-slot"] === "dialog-title")
+            (props && typeof props === "object" && "data-slot" in props && props["data-slot"] === "dialog-title")
           ) {
             return true;
           }
-          if (child.props && child.props.children) {
-            return checkChildren(child.props.children);
+          if (props && typeof props === "object" && "children" in props && props.children) {
+            return checkChildren(props.children as React.ReactNode);
           }
         }
         return false;

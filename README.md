@@ -56,8 +56,9 @@ pnpm install
 
 4. **Настройте базу данных**:
 ```bash
-# Сгенерируйте Prisma Client
-pnpm prisma:generate
+# Prisma Client генерируется автоматически при установке зависимостей (postinstall)
+# Если нужно сгенерировать вручную:
+npx prisma generate
 
 # Примените миграции к базе данных
 pnpm prisma:push
@@ -130,8 +131,9 @@ DATABASE_URL="postgresql://username:password@localhost:5432/tastyshop?schema=pub
 
 4. **Примените схему Prisma к базе данных:**
    ```bash
-   # Сгенерируйте Prisma Client
-   pnpm prisma:generate
+   # Prisma Client генерируется автоматически при установке зависимостей (postinstall)
+   # Если нужно сгенерировать вручную:
+   npx prisma generate
    
    # Примените схему к базе данных (создаст все таблицы)
    pnpm prisma:push

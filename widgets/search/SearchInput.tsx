@@ -72,7 +72,7 @@ export const SearchInput = ({ className }: Props) => {
                 href={`/product/${product.id}`}
               >
                 <div className="relative overflow-hidden rounded-lg ring-2 ring-gray-100 group-hover:ring-primary/30 transition-all flex-shrink-0">
-                  <Image className={"rounded-lg"} src={product.imageUrl} alt={product.name} width={52} height={52} className="w-10 h-10 md:w-[52px] md:h-[52px] lg:w-[52px] lg:h-[52px]" />
+                  <Image src={product.imageUrl} alt={product.name} width={52} height={52} className="rounded-lg w-10 h-10 md:w-[52px] md:h-[52px] lg:w-[52px] lg:h-[52px]" />
                 </div>
                 <span className="text-sm md:text-base lg:text-base font-medium group-hover:text-primary transition-colors truncate">{product.name}</span>
               </Link>

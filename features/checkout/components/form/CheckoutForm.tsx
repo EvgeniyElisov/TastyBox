@@ -72,7 +72,7 @@ export const CheckoutForm = () => {
               initialLoading={initialLoading}
             />
             <CheckoutPersonalInfo totalAmount={totalAmount} className={loading ? "opacity-40 pointer-events-none" : ""} />
-            <CheckoutAddress totalAmount={totalAmount} className={loading ? "opacity-40 pointer-events-none" : ""} />
+            <CheckoutAddress className={loading ? "opacity-40 pointer-events-none" : ""} />
           </div>
           <div className="w-full lg:w-[480px]">
             <CheckoutSidebar totalAmount={totalAmount} loading={loading || submitting} />

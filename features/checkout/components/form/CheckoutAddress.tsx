@@ -2,11 +2,10 @@ import { InfoBlock } from "features/checkout/components/InfoBlock";
 import { FormField } from "shared/ui/form";
 
 type Props = {
-  totalAmount: number;
   className?: string;
 };
 
-export const CheckoutAddress = ({ totalAmount, className }: Props) => {
+export const CheckoutAddress = ({ className }: Props) => {
   return (
     <InfoBlock title="3. Адрес доставки" className={className} contentClassName="p-6 md:p-10">
       <div className="flex flex-col gap-6">
